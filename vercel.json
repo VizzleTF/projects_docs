@@ -1,4 +1,15 @@
 {
-  "trailingSlash": true,
-  "cleanUrls": false
+  "framework": null,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/out/$1"
+    }
+  ]
 }
