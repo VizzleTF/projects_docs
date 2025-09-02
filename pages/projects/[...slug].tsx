@@ -6,6 +6,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
+import MarkdownContent from '../../components/MarkdownContent';
 
 interface ProjectPageProps {
   projectSlug: string;
@@ -109,9 +110,7 @@ export default function ProjectPage({
                 )}
               </header>
 
-              <div className="prose prose-lg prose-invert max-w-none">
-                <div dangerouslySetInnerHTML={{ __html: content }} />
-              </div>
+              <MarkdownContent content={content} />
             </div>
           </div>
         </div>

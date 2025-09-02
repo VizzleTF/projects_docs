@@ -28,6 +28,8 @@ CommitSage provides multiple ways to generate commit messages:
 
 ### Workflow Integration
 
+CommitSage integrates seamlessly into your Git workflow:
+
 ```mermaid
 sequenceDiagram
     participant Dev as Developer
@@ -46,6 +48,15 @@ sequenceDiagram
     Dev->>VSCode: Review & commit
     VSCode->>Git: Create commit
 ```
+
+**Workflow Steps:**
+1. **Make code changes** in your project
+2. **Stage changes** using Git or VS Code source control
+3. **Trigger generation** with `Ctrl+G` (Windows/Linux) or `Cmd+G` (Mac)
+4. **AI analyzes** staged changes and generates commit message
+5. **Review generated message** in commit input field
+6. **Edit if needed** and commit as usual
+7. **Changes are committed** to Git repository
 
 ## Commit Message Formats
 

@@ -1,54 +1,53 @@
-import { GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import fs from 'fs';
 import path from 'path';
 
-export default function Home() {
-  // This component will never render because of the redirect
-  return null;
+interface HomeProps {
+  firstProject: string | null;
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export default function Home({ firstProject }: HomeProps) {
+  const router = useRouter();
+
+  useEffect(() => {
+    if (firstProject) {
+      router.replace(`/projects/${firstProject}`);
+    } else {
+      router.replace('/404');
+    }
+  }, [firstProject, router]);
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center">
+      <div className="text-white text-xl">Loading...</div>
+    </div>
+  );
+}
+
+export const getStaticProps: GetStaticProps = async () => {
   const projectsDirectory = path.join(process.cwd(), 'content/projects');
+  let firstProject: string | null = null;
 
   try {
-    // Check if directory exists
-    if (!fs.existsSync(projectsDirectory)) {
-      console.error('Projects directory does not exist:', projectsDirectory);
-      return {
-        redirect: {
-          destination: '/404',
-          permanent: false,
-        },
-      };
-    }
+    if (fs.existsSync(projectsDirectory)) {
+      const projectDirs = fs.readdirSync(projectsDirectory, { withFileTypes: true })
+        .filter(dirent => dirent.isDirectory())
+        .map(dirent => dirent.name)
+        .sort();
 
-    const projectDirs = fs.readdirSync(projectsDirectory, { withFileTypes: true })
-      .filter(dirent => dirent.isDirectory())
-      .map(dirent => dirent.name)
-      .sort(); // Sort to ensure 00_, 01_, etc. are in order
-
-    console.log('Found project directories:', projectDirs);
-
-    if (projectDirs.length > 0) {
-      // Redirect to the first project (00_*)
-      const firstProject = projectDirs[0];
-      console.log('Redirecting to first project:', firstProject);
-      return {
-        redirect: {
-          destination: `/projects/${firstProject}`,
-          permanent: false,
-        },
-      };
+      if (projectDirs.length > 0) {
+        firstProject = projectDirs[0];
+      }
     }
   } catch (error) {
     console.error('Error reading projects directory:', error);
   }
 
-  // If no projects found, redirect to a 404 or show empty state
   return {
-    redirect: {
-      destination: '/404',
-      permanent: false,
+    props: {
+      firstProject,
     },
   };
 };
