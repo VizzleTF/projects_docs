@@ -6,15 +6,33 @@ date: 2025-09-02
 
 # Commit Sage (formerly GeminiCommit)
 
-<img alt="Visual Studio Marketplace Version" src="https://img.shields.io/visual-studio-marketplace/v/VizzleTF.geminicommit"> <img alt="Visual Studio Marketplace Last Updated" src="https://img.shields.io/visual-studio-marketplace/last-updated/VizzleTF.geminicommit"> <img alt="Visual Studio Marketplace Installs" src="https://img.shields.io/visual-studio-marketplace/i/VizzleTF.geminicommit"> <img alt="Visual Studio Marketplace Rating" src="https://img.shields.io/visual-studio-marketplace/stars/VizzleTF.geminicommit"> [![Ask DeepWiki](deepwiki.png)](https://deepwiki.com/VizzleTF/CommitSage)
+<img alt="Visual Studio Marketplace Version" src="https://img.shields.io/visual-studio-marketplace/v/VizzleTF.geminicommit"> <img alt="Visual Studio Marketplace Last Updated" src="https://img.shields.io/visual-studio-marketplace/last-updated/VizzleTF.geminicommit"> <img alt="Visual Studio Marketplace Installs" src="https://img.shields.io/visual-studio-marketplace/i/VizzleTF.geminicommit"> <img alt="Visual Studio Marketplace Rating" src="https://img.shields.io/visual-studio-marketplace/stars/VizzleTF.geminicommit"> [![Ask DeepWiki](/api/projects/00_commitSage/deepwiki.png)](https://deepwiki.com/VizzleTF/CommitSage)
 
-Commit Sage is a VSCode extension that automatically generates commit messages using various AI providers:
+CommitSage is an AI-powered VS Code extension that automatically generates meaningful Git commit messages. It analyzes your code changes and creates contextually appropriate commit messages using various AI providers.
+
+## Quick Navigation
+
+- **[📋 Features Overview](features)** - Complete feature list and capabilities
+- **[🚀 Installation Guide](installation)** - Step-by-step setup instructions
+- **[📖 Usage Guide](usage-guide)** - Comprehensive usage documentation
+- **[🏗️ Architecture](architecture)** - Technical architecture and design
+
+## Key Features
+
+- **🤖 AI-Powered Generation**: Automatic commit message creation using multiple AI providers
+- **🔄 Multi-Provider Support**: Gemini, OpenAI, Codestral, and Ollama integration
+- **📝 Format Support**: Conventional, Angular, Karma, Semantic, Emoji formats
+- **🌍 Multi-Language**: English, Russian, Chinese, Japanese, Spanish support
+- **⚡ Workflow Automation**: Auto-commit and auto-push capabilities
+- **🎛️ Project Configuration**: Per-project settings via `.commitsage` files
+
+Commit Sage supports various AI providers:
 - Gemini (default, requires API key, free)
 - OpenAI (requires API key or compatible provider)
 - Codestral (requires API key, free)
 - Ollama (local, free)
 
-![Commit Sage in action](/content/projects/00_commitSage/example.gif)
+![Commit Sage in action](/api/projects/00_commitSage/example.gif)
 
 
 ## Features
